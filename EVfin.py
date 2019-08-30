@@ -21,10 +21,16 @@ BLACK_LIST = 800
 
 
 def main():
+    # here ins is the file variable
     with open("mail_address.txt", "r") as ins:
+        # array where we will store the emails
         email_list = []
+        # line is each line in the file
         for line in ins:
+            # line.rstrip() will take each line from the file
             email_list.append(line.rstrip())
+        # file reading and storing in the array done here
+
     if have_internet():
         if len(email_list) > 0:
             check(0, email_list)
@@ -117,6 +123,7 @@ def result(email_address, val_response):
 
 
 def have_internet():
+    # conn is a http variable where we will set a test connection
     conn = httplib.HTTPConnection("www.google.com", timeout=5)
     try:
         conn.request("HEAD", "/")
